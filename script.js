@@ -35,3 +35,6 @@ const getCountryData = function (country) {
     countriesContainer.style.opacity = 1;
   });
 };
+
+getCountryData('russia');
+getCountryData('usa');
