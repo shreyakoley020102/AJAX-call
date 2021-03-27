@@ -70,7 +70,23 @@ const getCountryAndNeighbour = function (country) {
   request.addEventListener('load', function () {
     const [data] = JSON.parse(this.responseText);
     console.log(data);
+
+    //Render country
     renderCountry(data);
+
+    //Get neighbour country
+    const [neighbour] = data.borders;
+
+    if (!neighbour) return;
+
+    //AJAX call country 2
+    const request2 = new XMLHttpRequest();
+    request.open('GET', `https://restcountries.eu/rest/v2/alpha/${neighbour}`);
+    request2.send();
+
+    request2.addEventListener('load', function () {
+      console.log(this.responseText);
+    });
   });
 };
 
