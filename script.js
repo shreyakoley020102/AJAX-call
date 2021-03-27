@@ -93,4 +93,4 @@ const getCountryAndNeighbour = function (country) {
   });
 };
 
-getCountryAndNeighbour('russia');
+getCountryAndNeighbour('usa');
