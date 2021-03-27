@@ -39,18 +39,8 @@ const countriesContainer = document.querySelector('.countries');
 // getCountryData('russia');
 // getCountryData('usa');
 
-const getCountryData = function (country) {
-  const request = new XMLHttpRequest(); //old school way
-
-  request.open('GET', `https://restcountries.eu/rest/v2/name/${country}`);
-
-  request.send();
-
-  request.addEventListener('load', function () {
-    const [data] = JSON.parse(this.responseText);
-    console.log(data);
-
-    const html = `
+const renderCountry = function (data) {
+  const html = `
   <article class="country">
           <img class="country__img" src="${data.flag}" />
           <div class="country__data">
@@ -66,9 +56,22 @@ const getCountryData = function (country) {
           </div>
         </article>
   `;
-    countriesContainer.insertAdjacentHTML('beforeend', html);
-    countriesContainer.style.opacity = 1;
+  countriesContainer.insertAdjacentHTML('beforeend', html);
+  countriesContainer.style.opacity = 1;
+};
+
+const getCountryAndNeighbour = function (country) {
+  const request = new XMLHttpRequest(); //old school way
+
+  request.open('GET', `https://restcountries.eu/rest/v2/name/${country}`);
+
+  request.send();
+
+  request.addEventListener('load', function () {
+    const [data] = JSON.parse(this.responseText);
+    console.log(data);
+    renderCountry(data);
   });
 };
 
-getCountryData('russia');
+getCountryAndNeighbour('russia');
