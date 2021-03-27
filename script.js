@@ -81,7 +81,7 @@ const getCountryAndNeighbour = function (country) {
 
     //AJAX call country 2
     const request2 = new XMLHttpRequest();
-    request.open('GET', `https://restcountries.eu/rest/v2/alpha/${neighbour}`);
+    request2.open('GET', `https://restcountries.eu/rest/v2/alpha/${neighbour}`);
     request2.send();
 
     request2.addEventListener('load', function () {
