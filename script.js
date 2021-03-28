@@ -113,7 +113,9 @@ const getCountryData = function (country) {
       if (!neighbour) return;
       //Country 2
       return fetch(`https://restcountries.eu/rest/v2/alpha/${neighbour}`);
-    });
+    })
+    .then(response => response.json())
+    .then(data => renderCountry(data, 'neighbour'));
 };
 
 getCountryData('usa');
