@@ -99,18 +99,20 @@ const renderCountry = function (data, classNAme = '') {
 // request.open('GET', `https://restcountries.eu/rest/v2/name/${country}`);
 // request.send();
 
-const request = fetch('https://restcountries.eu/rest/v2/name/usa');
-console.log(request);
+// const request = fetch('https://restcountries.eu/rest/v2/name/usa');
+// console.log(request);
 
 const getCountryData = function (country) {
+  //Country 1
   fetch(`https://restcountries.eu/rest/v2/name/${country}`)
-    .then(function (response) {
-      console.log(response);
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data);
+    .then(response => response.json())
+    .then(data => {
       renderCountry(data[0]);
+      const neighbour = data[0].borders[0];
+
+      if (!neighbour) return;
+      //Country 2
+      return fetch(`https://restcountries.eu/rest/v2/alpha/${neighbour}`);
     });
 };
 
