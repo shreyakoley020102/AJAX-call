@@ -111,6 +111,7 @@ const getCountryData = function (country) {
       const neighbour = data[0].borders[0];
 
       if (!neighbour) return;
+
       //Country 2
       return fetch(`https://restcountries.eu/rest/v2/alpha/${neighbour}`);
     })
