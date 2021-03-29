@@ -125,7 +125,8 @@ const getCountryData = function (country) {
     .catch(err => {
       console.error(`${err} ☹️☹️`);
       renderError(`Something went wrong ☹️☹️ ${err.message}. Try again!`);
-    });
+    })
+    .finally(() => {});
 };
 
 btn.addEventListener('click', function () {
