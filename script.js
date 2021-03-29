@@ -119,4 +119,6 @@ const getCountryData = function (country) {
     .then(data => renderCountry(data, 'neighbour'));
 };
 
-getCountryData('usa');
+btn.addEventListener('click', function () {
+  getCountryData('usa');
+});
