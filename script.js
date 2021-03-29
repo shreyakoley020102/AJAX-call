@@ -105,7 +105,10 @@ const renderCountry = function (data, classNAme = '') {
 const getCountryData = function (country) {
   //Country 1
   fetch(`https://restcountries.eu/rest/v2/name/${country}`)
-    .then(response => response.json())
+    .then(
+      response => response.json(),
+      err => alert(err)
+    )
     .then(data => {
       renderCountry(data[0]);
       const neighbour = data[0].borders[0];
