@@ -120,14 +120,19 @@ const getCountryData = function (country) {
     })
     .then(data => {
       renderCountry(data[0]);
-      const neighbour = data[0].borders[0];
+      //const neighbour = data[0].borders[0];
+      const neighbour = 'drtfyguhi';
 
       if (!neighbour) return;
 
       //Country 2
       return fetch(`https://restcountries.eu/rest/v2/alpha/${neighbour}`);
     })
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok)
+        throw new Error(`Country not found (${response.status})`);
+      response.json();
+    })
     .then(data => renderCountry(data, 'neighbour'))
     .catch(err => {
       console.error(`${err} ☹️☹️`);
@@ -142,4 +147,4 @@ btn.addEventListener('click', function () {
   getCountryData('usa');
 });
 
-getCountryData('usactyuiop');
+//getCountryData('usactyuiop');
