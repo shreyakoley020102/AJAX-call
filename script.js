@@ -142,4 +142,4 @@ btn.addEventListener('click', function () {
   getCountryData('usa');
 });
 
-//getCountryData('usactyuiop');
+getCountryData('usactyuiop');
